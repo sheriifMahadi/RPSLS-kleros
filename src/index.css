@@ -1,15 +1,12 @@
+@import url('./assets/styles/header.css');
+@import url('./assets/styles/switchNetwork.css');
+@import url('./assets/styles/newGame.css');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 
 body {
   @apply bg-[black] text-[white];
 }
 
-.header-main {
-  @apply h-20
-}
-
-button {
-  @apply bg-[#ff7800] p-2;
-}

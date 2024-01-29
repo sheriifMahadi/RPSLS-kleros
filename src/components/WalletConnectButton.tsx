@@ -6,15 +6,14 @@ function WalletConnectButton({isLoading, onclick}) {
      <>
       {isLoading? (
                 <div>
-                    <button>
+                    <button className="header-btn">
                         Connecting
                     </button>
                 </div>
             ): (
                 <div>
-                    <button onClick={onclick}>
+                    <button className="connect header-btn" onClick={onclick}>
                         Connect wallet
-                        
                     </button>
                 </div>
             )

@@ -1,6 +1,6 @@
 export const contracts = {
     factory: {
-        address: process.env.VITE_APP_RPSLS_ADDRESS,
+        address: import.meta.env.VITE_APP_RPSLS_ADDRESS,
         "abi": [
             {
               "constant": true,

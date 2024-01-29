@@ -1,0 +1,18 @@
+.modal-container {
+    @apply flex justify-center items-center;
+    text-align: center;
+    @apply w-full h-full bg-[rgb(0,0,0)] bg-[rgba(0,0,0,0.4)] fixed z-[1];
+    @apply overflow-auto top-0 left-0
+}   
+.modal {
+    @apply bg-[rgb(5,5,5,0.8)] p-60
+    
+}
+.switchNetwork {
+    @apply p-5 text-xl font-bold;
+    
+}
+
+.modal > p {
+    @apply pb-4 text-xl
+}

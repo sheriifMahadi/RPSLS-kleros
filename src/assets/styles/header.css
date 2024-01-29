@@ -1,0 +1,22 @@
+.header-main {
+    @apply h-20 flex justify-between p-3;
+    background-color: black;
+  }
+
+.logo {
+  @apply text-[#ff7800] font-extrabold	text-2xl pt-2;  
+}
+
+.header-btn{
+  @apply bg-[#ff7800] p-2 rounded-lg;
+}
+.active {
+  @apply py-[10px] mr-5
+}
+.header-address {
+  @apply !truncate w-[80px] 
+}
+
+hr {
+  @apply opacity-20
+}

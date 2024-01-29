@@ -2,5 +2,7 @@
      "compilerOptions": {
       "target": "ESNext",
       "types": ["vite/client"]
-    }
+    },
+    "include": ["src/components", "custom.d.ts"]
+
   }

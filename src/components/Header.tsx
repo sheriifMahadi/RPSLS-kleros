@@ -1,6 +1,7 @@
 import React from "react";
 import { Connector, useAccount, useConnect, useDisconnect } from "wagmi";
 import WalletConnectButton from "./WalletConnectButton";
+import SwitchNetwork from "./SwitchNetwork";
 
 function Header () {
     const { isLoading : isConnectingWallet, connectors, connect } = useConnect();
@@ -12,27 +13,47 @@ function Header () {
             connector: connectors[0]
         })
     }
-    return (
     
-        <div className="header-main">
-            <div className="logo">
-            </div>
-            {!address ? (
-                <WalletConnectButton 
-                isLoading={isConnectingWallet}
-                onclick={handleConnect}
-                />
-            ): (
-                <div>
-                    {/* icon */}
-                    <span>
-                        {address}
-                    </span>
+    return (
+        <>
+            <div className="header-main">
+                <div className="logo">
+                    RPSLS --
                 </div>
-            )
-               
-            }  
-        </div>)
+                <div className="">
+                    {!address ? (
+                        <WalletConnectButton 
+                        isLoading={isConnectingWallet}
+                        onclick={handleConnect}
+                        />
+                    ): (
+                        <div>
+                              <span className="active header-btn">
+                                <button>
+                                    <span>
+                                    Active games
+
+                                    </span>
+                                </button>
+                            </span>
+                            <span>
+                                <button 
+                                onClick={() => disconnect()} className={address ? "disconnect header-btn header-address" : "header-btn"}>
+                                    <span className="header-address">{address}</span>
+                                </button>
+                            </span>
+                          
+                        </div>
+                    )
+                    
+                    }
+                </div>
+            </div>
+        <hr />
+        <SwitchNetwork/>
+
+        </>
+)
 }
 
 export default Header

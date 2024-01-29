@@ -1,0 +1,56 @@
+.flex-container {
+    @apply flex pt-5 justify-center
+}
+
+.weapon-images-wrapper{
+   @apply py-4 px-20
+}
+
+.weapon-images-wrapper > p {
+    @apply font-bold text-3xl text-center
+}
+.weapon-images > img {
+    @apply w-20 p-1;
+    filter: invert(57%) sepia(65%) saturate(4582%) hue-rotate(2deg) brightness(105%) contrast(103%);
+}
+
+.clicked {
+    transform: scale(0.98); 
+    @apply shadow-[3px_2px_1px_rgba(0,0,0,0)] border rounded-full opacity-25;
+}
+
+.weapon-images > img:hover{
+    cursor: pointer;
+    @apply shadow-[3px_2px_1px_rgba(0,0,0,0)] opacity-55;
+
+}
+
+.text-input-wrapper {
+    @apply pl-10 pt-2
+}
+
+.text-input-wrapper > input {
+    @apply w-[500px] h-[130px] mt-2 text-lg font-semibold bg-black
+}
+
+.text-input-wrapper > p {
+    @apply  text-2xl 
+}
+
+input:active, input:focus{
+    @apply outline-none
+}
+
+.text-input-wrapper > input::-webkit-input-placeholder {
+    @apply text-left text-lg;
+   
+}
+
+.button-div {
+    @apply pl-20 text-center pt-5
+}
+
+.button-div > button {
+    @apply bg-[#ff7800] w-60 h-12 rounded-lg ;
+
+}
