@@ -2,6 +2,7 @@ import React from "react";
 import { Connector, useAccount, useConnect, useDisconnect } from "wagmi";
 import WalletConnectButton from "./WalletConnectButton";
 import SwitchNetwork from "./SwitchNetwork";
+import { useNavigate } from 'react-router-dom';
 
 function Header () {
     const { isLoading : isConnectingWallet, connectors, connect } = useConnect();
@@ -13,7 +14,8 @@ function Header () {
             connector: connectors[0]
         })
     }
-    
+    const navigate = useNavigate();
+
     return (
         <>
             <div className="header-main">
@@ -29,9 +31,9 @@ function Header () {
                     ): (
                         <div>
                               <span className="active header-btn">
-                                <button>
+                                <button onClick={() => navigate('/history')}>
                                     <span>
-                                    Active games
+                                    History
 
                                     </span>
                                 </button>

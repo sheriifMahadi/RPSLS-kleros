@@ -1,6 +1,9 @@
 @import url('./assets/styles/header.css');
 @import url('./assets/styles/switchNetwork.css');
 @import url('./assets/styles/newGame.css');
+@import url('./assets/styles/gamedetail.css');
+@import url('./assets/styles/history.css');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -10,3 +13,6 @@ body {
   @apply bg-[black] text-[white];
 }
 
+.button:active{
+  
+}

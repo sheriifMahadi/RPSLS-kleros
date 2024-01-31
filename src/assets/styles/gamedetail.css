@@ -1,0 +1,22 @@
+
+.success > p {
+    @apply font-extrabold
+}
+
+.success > p > span {
+    @apply font-normal pl-1
+}
+
+.game-detail-heading {
+    @apply font-extrabold text-2xl pb-2
+}
+
+.share-btn > button {
+    @apply w-80 h-14 mb-10;
+
+}
+
+.game-detail-wrapper > hr{
+    @apply !pt-10 w-[100%]
+}
+

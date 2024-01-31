@@ -15,7 +15,6 @@ export const useLocalStorage = (
   };
 
   const value = useSyncExternalStore(subscribe, getSnapShot);
-
   const setValue = (newValue: string, _key?: string) => {
     localStorage.setItem(_key || key, newValue);
   };
@@ -25,6 +24,5 @@ export const useLocalStorage = (
       setValue(value, key);
     }
   }, [key]);
-
   return [value, setValue];
 };

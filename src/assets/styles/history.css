@@ -1,0 +1,39 @@
+.history-main {
+    @apply p-10
+}
+
+.flex-container-history {
+    @apply flex ;
+    
+}
+.history-main > h1 {
+    @apply font-bold text-3xl 
+
+}
+
+.back-btn-span {
+    @apply flex justify-end
+}
+
+.back-btn-span > button {
+    @apply bg-[#ff7800] rounded-lg px-4 py-2
+}
+
+.history-hash > .hash {
+    @apply font-extralight
+}
+
+.history-hash {
+    @apply flex justify-between
+}
+
+.history-hash-btn > button {
+    @apply bg-[#ff7800] rounded-lg px-4 py-2 
+
+}
+
+.history-hash-btn {
+    @apply pb-2 pl-4
+
+}
+

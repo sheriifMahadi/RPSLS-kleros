@@ -11,8 +11,9 @@
   @apply bg-[#ff7800] p-2 rounded-lg;
 }
 .active {
-  @apply py-[10px] mr-5
+  @apply py-[10px] mr-5 font-thin opacity-80 bg-black
 }
+
 .header-address {
   @apply !truncate w-[80px] 
 }

@@ -7,11 +7,10 @@ import { useLocalStorage } from '../hooks/useLocalStorage';
 import { AppContext } from '../context/AppContext';
 import { validateAddress } from '../validators/Validators';
 import { Weapons, weapons } from '../models/weaponsModel';
-
+import GameDetail from './GameDetail.tsx';
 import React from 'react';
 
-
-function NewGame () {
+function NewGame() {
     
     const [clicked, setClicked] = useState(false)
     const { address } = useAccount();
@@ -43,7 +42,7 @@ function NewGame () {
         data: createNewGameSessionData,
       } = useContractWrite({
         ...contracts.factory,
-        functionName: "RPS",
+        functionName: "createGameSession",
         value: parseEther(bid),
       });
     
@@ -56,7 +55,7 @@ function NewGame () {
         }
     }, [createNewGameSessionData?.hash]);
     
-        const [gameSessionHash, setGameSessionHash] = useState<Hash>();
+      const [gameSessionHash, setGameSessionHash] = useState<Hash>();
 
 
     useEffect(() => {
@@ -85,63 +84,73 @@ function NewGame () {
     return (
         <>
             <div className="weapon-images-wrapper">
-                <p>New Game</p>
-                <div className="flex-container">
-                <div className="weapon-images">
-                   {!isMoveCommitted 
-                   ? <>{weapons.map((weapon:Weapons) => (
-                        <img key={weapon-1} src={imgPaths[weapon - 1]} alt="" 
-                        className={selectedWeapon === weapon ? 'clicked': ''} 
-                        onClick={() => setSelectedWeapon(weapon)}/>
-                   ))}</>
-                   :<></>}
-                </div>
-                <div>
-                    <div className="inputs">
-                        <div className="text-input-wrapper address">
-                        <p>Wallet Address</p>
-                        <input className='' 
-                        type="text" 
-                        value={player2}
-                        placeholder='0x123A5357Ff689d2e54fe47e3568D057e35dDc8E5'
-                        onChange={({ target: { value } }: ChangeEvent<HTMLInputElement>) =>
-                        isAddress(value) && setPlayer2(value)}
-                        />
-                        </div>
-
-                        <div className="text-input-wrapper bid">
-                        <p>Eth Bid</p>
-                        <input className='' 
-                        type="number" 
-                        placeholder='1'
-                        onChange={({ target: { value } }: ChangeEvent<HTMLInputElement>) =>
-                        setBid(value)}
-                        />
-                        </div>
-                        
-                    </div>
-                    <div className="button-div">
-                    {!(
-                    address &&
-                    selectedWeapon !== Weapons.Null &&
-                    Number(bid) > 0 &&
-                    validateAddress(player2)
-                ) ? <button disabled
-                        className='start-game-btn'>
-                        Start Game
-                    </button>
-                    :<button 
-                        className='start-game-btn'
-                        onClick={handleStartGame}
-                        >
-                        Start Game
-                    </button>
-                    } 
+                {!isMoveCommitted ? <p>New Game</p>: <p></p>}
+                {!isMoveCommitted 
+                 ?<div className="flex-container">
+                 <div className="weapon-images">
+                    {!isMoveCommitted 
+                    ? <>{weapons.map((weapon:Weapons) => (
+                         <img key={weapon-1} src={imgPaths[weapon - 1]} alt="" 
+                         className={selectedWeapon === weapon ? 'clicked': ''} 
+                         onClick={() => setSelectedWeapon(weapon)}/>
+                    ))}</>
+                    :<></>}
                     
-                    </div>
-                </div>
-                </div>
-
+                 </div>
+                 <div>
+                     <div className="inputs">
+                         <div className="text-input-wrapper address">
+                         <p>Wallet Address</p>
+                         <input className='' 
+                         type="text" 
+                         value={player2}
+                         placeholder='0x123A5357Ff689d2e54fe47e3568D057e35dDc8E5'
+                         onChange={({ target: { value } }: ChangeEvent<HTMLInputElement>) =>
+                         isAddress(value) && setPlayer2(value)}
+                         />
+                         </div>
+ 
+                         <div className="text-input-wrapper bid">
+                         <p>Eth Bid</p>
+                         <input className='' 
+                         type="number" 
+                         placeholder='1'
+                         value={bid}
+                         onChange={({ target: { value } }: ChangeEvent<HTMLInputElement>) =>
+                         setBid(value)}
+                         />
+                         </div>
+                         
+                     </div>
+                     <div className="button-div">
+                     {!(
+                     address &&
+                     selectedWeapon !== Weapons.Null &&
+                     Number(bid) > 0 &&
+                     validateAddress(player2)
+                 ) ? <button disabled
+                         className='start-game-btn'>
+                         Start Game
+                     </button>
+                     :<button 
+                         className='start-game-btn'
+                         onClick={handleStartGame}
+                         >
+                         Start Game
+                     </button>
+                     } 
+                     </div>
+                 </div>
+                 </div>
+                 : createNewGameSessionData?.hash ? (
+                  <GameDetail
+                  setGameSessionHash={setGameSessionHash}
+                  transactionHash={createNewGameSessionData?.hash}
+                  bid={bid}
+                  player2={player2}
+                  />
+                 ): <></>
+                }
             </div>
            
         </>

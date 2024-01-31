@@ -3,13 +3,29 @@ import { WagmiConfig } from 'wagmi'
 import { wagmiconfig } from './wagmiconfig';
 import Header from './components/Header';
 import NewGame from './components/NewGame'
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import AppContextProvider from './context/AppContext';
+// import React from 'react';
+import History from './components/History.tsx';
 
 function App() {
- 
   return (
     <WagmiConfig config={wagmiconfig}>
-      <Header/>
-      <NewGame/>
+      <AppContextProvider>
+        <BrowserRouter>
+        <Header/>
+
+          <Routes>
+            <Route 
+            path=''
+            element={<NewGame/>}/>
+
+            <Route 
+            path='history'
+            element={<History/>}/>
+           </Routes>
+        </BrowserRouter>
+      </AppContextProvider>
     </WagmiConfig>
   )
   

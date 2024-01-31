@@ -1,196 +1,280 @@
 export const contracts = {
     factory: {
-        address: import.meta.env.VITE_APP_RPSLS_ADDRESS,
-        "abi": [
+        address: import.meta.env.VITE_APP_RPSLS_FACTORY_ADDRESS,
+        abi: [
+          {
+            "anonymous": false,
+            "inputs": [
+              {
+                "indexed": true,
+                "internalType": "address",
+                "name": "gameSession",
+                "type": "address"
+              }
+            ],
+            "name": "NewGameSession",
+            "type": "event"
+          },
+          {
+            "inputs": [
+              {
+                "internalType": "bytes32",
+                "name": "_move1Hash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "address",
+                "name": "_player2",
+                "type": "address"
+              }
+            ],
+            "name": "createGameSession",
+            "outputs": [],
+            "stateMutability": "payable",
+            "type": "function"
+          },
+          {
+            "inputs": [],
+            "name": "getGameSessions",
+            "outputs": [
+              {
+                "internalType": "contract RPSLS[]",
+                "name": "_gameSessions",
+                "type": "address[]"
+              }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+          }
+        ] as const
+    },
+    rpsls: {
+      abi: [
+        {
+          "inputs": [
             {
-              "constant": true,
-              "inputs": [
-                {
-                  "name": "_c1",
-                  "type": "uint8"
-                },
-                {
-                  "name": "_c2",
-                  "type": "uint8"
-                }
-              ],
-              "name": "win",
-              "outputs": [
-                {
-                  "name": "w",
-                  "type": "bool"
-                }
-              ],
-              "payable": false,
-              "stateMutability": "view",
-              "type": "function"
+              "internalType": "bytes32",
+              "name": "_move1Hash",
+              "type": "bytes32"
             },
             {
-              "constant": false,
-              "inputs": [],
-              "name": "j2Timeout",
-              "outputs": [],
-              "payable": false,
-              "stateMutability": "nonpayable",
-              "type": "function"
+              "internalType": "address",
+              "name": "_player1",
+              "type": "address"
             },
             {
-              "constant": true,
-              "inputs": [],
-              "name": "stake",
-              "outputs": [
-                {
-                  "name": "",
-                  "type": "uint256"
-                }
-              ],
-              "payable": false,
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "constant": true,
-              "inputs": [],
-              "name": "c2",
-              "outputs": [
-                {
-                  "name": "",
-                  "type": "uint8"
-                }
-              ],
-              "payable": false,
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "constant": true,
-              "inputs": [],
-              "name": "c1Hash",
-              "outputs": [
-                {
-                  "name": "",
-                  "type": "bytes32"
-                }
-              ],
-              "payable": false,
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "constant": false,
-              "inputs": [
-                {
-                  "name": "_c2",
-                  "type": "uint8"
-                }
-              ],
-              "name": "play",
-              "outputs": [],
-              "payable": true,
-              "stateMutability": "payable",
-              "type": "function"
-            },
-            {
-              "constant": true,
-              "inputs": [],
-              "name": "j2",
-              "outputs": [
-                {
-                  "name": "",
-                  "type": "address"
-                }
-              ],
-              "payable": false,
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "constant": true,
-              "inputs": [],
-              "name": "lastAction",
-              "outputs": [
-                {
-                  "name": "",
-                  "type": "uint256"
-                }
-              ],
-              "payable": false,
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "constant": false,
-              "inputs": [
-                {
-                  "name": "_c1",
-                  "type": "uint8"
-                },
-                {
-                  "name": "_salt",
-                  "type": "uint256"
-                }
-              ],
-              "name": "solve",
-              "outputs": [],
-              "payable": false,
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "constant": true,
-              "inputs": [],
-              "name": "j1",
-              "outputs": [
-                {
-                  "name": "",
-                  "type": "address"
-                }
-              ],
-              "payable": false,
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "constant": false,
-              "inputs": [],
-              "name": "j1Timeout",
-              "outputs": [],
-              "payable": false,
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "constant": false,
-              "inputs": [
-                {
-                  "name": "_c1Hash",
-                  "type": "bytes32"
-                },
-                {
-                  "name": "_j2",
-                  "type": "address"
-                }
-              ],
-              "name": "RPS",
-              "outputs": [],
-              "payable": true,
-              "stateMutability": "payable",
-              "type": "function"
-            },
-            {
-              "constant": true,
-              "inputs": [],
-              "name": "TIMEOUT",
-              "outputs": [
-                {
-                  "name": "",
-                  "type": "uint256"
-                }
-              ],
-              "payable": false,
-              "stateMutability": "view",
-              "type": "function"
+              "internalType": "address",
+              "name": "_player2",
+              "type": "address"
             }
-          ] as const
-    }
+          ],
+          "stateMutability": "payable",
+          "type": "constructor"
+        },
+        {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "winner",
+              "type": "address"
+            }
+          ],
+          "name": "GameSolved",
+          "type": "event"
+        },
+        {
+          "anonymous": false,
+          "inputs": [],
+          "name": "GameTied",
+          "type": "event"
+        },
+        {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "fallbackWinner",
+              "type": "address"
+            }
+          ],
+          "name": "GameTimedOut",
+          "type": "event"
+        },
+        {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "_player2",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "enum RPSLS.Move",
+              "name": "_move2",
+              "type": "uint8"
+            }
+          ],
+          "name": "Player2Played",
+          "type": "event"
+        },
+        {
+          "inputs": [],
+          "name": "TIMEOUT_IN_MS",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "claimTimeout",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "lastTimePlayed",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "move1",
+          "outputs": [
+            {
+              "internalType": "enum RPSLS.Move",
+              "name": "",
+              "type": "uint8"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "move2",
+          "outputs": [
+            {
+              "internalType": "enum RPSLS.Move",
+              "name": "",
+              "type": "uint8"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "enum RPSLS.Move",
+              "name": "_move2",
+              "type": "uint8"
+            }
+          ],
+          "name": "play",
+          "outputs": [],
+          "stateMutability": "payable",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "player1",
+          "outputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "player2",
+          "outputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "enum RPSLS.Move",
+              "name": "_move1",
+              "type": "uint8"
+            },
+            {
+              "internalType": "string",
+              "name": "_salt",
+              "type": "string"
+            }
+          ],
+          "name": "solve",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "stake",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "enum RPSLS.Move",
+              "name": "_move1",
+              "type": "uint8"
+            },
+            {
+              "internalType": "enum RPSLS.Move",
+              "name": "_move2",
+              "type": "uint8"
+            }
+          ],
+          "name": "win",
+          "outputs": [
+            {
+              "internalType": "bool",
+              "name": "",
+              "type": "bool"
+            }
+          ],
+          "stateMutability": "pure",
+          "type": "function"
+        }
+      ] as const
+    },
 }
