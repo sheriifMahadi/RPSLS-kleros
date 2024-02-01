@@ -82,7 +82,7 @@ function GameDetail ({setGameSessionHash: _setGameSessionHash,
 
             : transactionData?.status === 'success' && !error
             ?   <div className='success'>
-                    <p>Status: <span>Success</span></p>
+                    <p>Status: <span>Game created. </span></p>
                     <p>Game session Hash: 
                         <span>
                             {gameSessionHash}    

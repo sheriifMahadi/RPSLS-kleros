@@ -1,5 +1,5 @@
 .details {
-    @apply pl-10 pt-2
+    @apply pt-2
 }
 
 .details > h1 {
@@ -9,6 +9,7 @@
 .light-font-text{
     @apply !font-extralight pl-5
 }
+
 .flex-container-show-player-moves {
     @apply flex
 }
@@ -23,5 +24,18 @@
 }
 
 .finished {
-    @apply py-5
+    @apply py-5 
+}
+
+.won{
+    @apply font-semibold block p-2 text-xl
+}
+
+.won--hash {
+    @apply font-extralight pl-6
+}
+@media (max-width: 800px) {
+    /* .weapon-images-wrapper {
+        @apply p-0
+    } */
 }

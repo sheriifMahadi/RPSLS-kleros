@@ -1,5 +1,5 @@
 
-import React, { FC, useContext, useEffect } from 'react'
+import React, { FC, useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { Hash } from 'viem';
 import { useContractRead, useContractReads, useWalletClient } from 'wagmi';
@@ -7,6 +7,7 @@ import { AppContext } from '../context/AppContext'
 import { contracts } from '../contracts'
  
 function History(): FC {
+  const [stillOn, setStillOn] = useState("")
     const { data: walletClient } = useWalletClient();
     const { isLoading, data: availableGameSessions } = useContractRead({
       ...contracts.factory,
@@ -14,6 +15,7 @@ function History(): FC {
       account: walletClient?.account,
       watch: true,
     });
+
     const { data: activeGameSessions, isLoading: isGameStakesLoading } =
     useContractReads({
       contracts: availableGameSessions?.map((gameSession: Hash) => {
@@ -25,9 +27,8 @@ function History(): FC {
       }),
       select: (data) => {
         if (!availableGameSessions) return [];
-
         return data
-          .filter((session) => Number(session.result) > 0)
+          .filter((session) => Number(session.result) >= 0)
           .map((_, index) => availableGameSessions[index]);
       },
       watch: true,

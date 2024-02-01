@@ -20,7 +20,7 @@
 }
 
 .history-hash > .hash {
-    @apply font-extralight
+    @apply font-extralight 
 }
 
 .history-hash {
@@ -37,3 +37,15 @@
 
 }
 
+@media (max-width: 800px) {
+    .history-hash {
+        @apply block 
+    }
+
+    .history-hash-btn > button {
+        @apply bg-[#ff7800] rounded-lg px-4 py-2 my-2
+    
+    }
+    
+
+}

@@ -263,11 +263,24 @@ function ActiveGame() {
                         
                         {isPlayer1Winner === false 
                         ?   <>
-                                Player2: {player2} Won this round
+                                <span className='won'>
+                                Player2: 
+                                </span> 
+                                <span className="won--hash">
+                                {player2} 
+                                </span> 
+                                <span className='won'>Won this round</span>
                             </> 
                         : isPlayer2Winner === false 
                         ?   <>
-                                Player1: {player1} Won this round
+                                <span className='won'>
+                                Player1:
+                                </span> 
+                                <span className="won--hash">
+                                {player1} 
+                                </span> 
+                                <span className='won'>Won this round</span>
+
                             </>
                         :   <>
                             <p className='light-font-text'>The game is tied. Stakes refunded</p>
@@ -284,5 +297,3 @@ function ActiveGame() {
 
 
 export default ActiveGame
-
- 
