@@ -20,7 +20,9 @@ function Header () {
         <>
             <div className="header-main">
                 <div className="logo">
-                    RPSLS --
+                    <a href="/">
+                        RPSLS --
+                    </a>
                 </div>
                 <div className="">
                     {!address ? (

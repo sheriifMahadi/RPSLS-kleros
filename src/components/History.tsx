@@ -54,8 +54,9 @@ function History(): FC {
             <div className="flex-container-history">
             <div className="history-main-inner">
             {activeGameSessions && activeGameSessions?.length >=1 ? (
-                activeGameSessions.map((hash: Hash) => (
-                    <div key={hash} className='history-hash'>
+                activeGameSessions.map((hash: Hash, id) => (
+                    <div key={id} className='history-hash'>
+                        
                         <div className='hash'>
                             {hash}
                             <hr />
