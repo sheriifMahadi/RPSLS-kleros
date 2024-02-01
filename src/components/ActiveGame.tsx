@@ -180,16 +180,18 @@ function ActiveGame() {
                     </div>
                     <div className="details">
                         <h1>Players</h1>
-                        <p>{player1}</p>
-                        <p>{player2}</p>
+                        <p className='light-font-text'>{player1}</p>
+                        <p className='light-font-text'>{player2}</p>
 
                         <h1>Stake</h1>
-                        <p>{stake? formatEther(stake): 0}</p>
+                        <p className='light-font-text'>{stake? formatEther(stake): 0}</p>
                         <h1>Count down</h1>
-                        {convert(minutes)}:{convert(seconds)}
+                        <span className='light-font-text'>{convert(minutes)}:{convert(seconds)}</span>
                         <div className="flex-container-show-player-moves">
                             <div className="blured">
-
+                                <div className="weapon-images">
+                                  <img src={imgPaths[1]} alt="" />
+                                </div>
                             </div>
                             <div className="player2-move">
                                 {player2 === address && !move2 
@@ -204,40 +206,50 @@ function ActiveGame() {
                                 </div>
                                 </>
                                 : <>
+                                <div className="weapon-images">
+
                                     {move2 
                                     ? <img key={imgPaths[move2 - 1]} src={imgPaths[move2 - 1]} alt="" 
                                     className={selectedWeapon === "" ? 'clicked': ''}
                                     />                                    
                                     : <>
-                                        Please select a move
+                                        <span className='connect-wallet-to-play'>
+                                          Please connect your wallet to play
+                                        </span>
                                     </> 
                                 }
+                                </div>
+
                                 </>}
+                              
                                 {(player2 === address && move2 && isEligibleForTimeout) ||
                                 (isEligibleForTimeout && player1 === address && !move2)
-                                ?   <>
-                                        <button
+                                ?   <div className='button-div'>
+                                        <button 
+                                        className='start-game-btn'
                                         onClick={() => claimTimeout?.()}
                                         >
                                             Claim timeout
                                         </button>
-                                    </>
+                                    </div>
                                 :   <>
                                         <></>
                                     </>}
                                 {player1 === address && move2 
-                                ?   <>
-                                    <button onClick={() => solveGame?.()}
+                                ?   <div className='button-div'>
+                                    <button 
+                                    className='start-game-btn'
+                                    onClick={() => solveGame?.()}
                                     >
-                                    View Result    
+                                    View result
                                     </button>
-                                    </>
+                                    </div>
                                 : 
                                     <>
                                     </>}
 
                                 {
-                                    successMessage ? {successMessage} : <></>
+                                    successMessage ? <></> : <></>
                                 }
                             </div>
                         </div>
@@ -247,18 +259,18 @@ function ActiveGame() {
                 
                 : player1 && move2 
                 ?   <>
-                        Game has been solved
-                        <p>The winner is </p>
+                        <p className='finished'>Round has ended</p>
+                        
                         {isPlayer1Winner === false 
                         ?   <>
-                                Player2: {player2}
+                                Player2: {player2} Won this round
                             </> 
                         : isPlayer2Winner === false 
                         ?   <>
-                                Player1: {player1}
+                                Player1: {player1} Won this round
                             </>
                         :   <>
-                            The game is tied. Stakes refunded
+                            <p className='light-font-text'>The game is tied. Stakes refunded</p>
                             </>
                             }
                     </>

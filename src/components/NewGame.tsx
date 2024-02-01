@@ -130,13 +130,13 @@ function NewGame() {
                      validateAddress(player2)
                  ) ? <button disabled
                          className='start-game-btn'>
-                         Start Game
+                         Play
                      </button>
                      :<button 
                          className='start-game-btn'
                          onClick={handleStartGame}
                          >
-                         Start Game
+                          Play
                      </button>
                      } 
                      </div>

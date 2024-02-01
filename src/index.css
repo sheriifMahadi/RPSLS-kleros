@@ -15,6 +15,11 @@ body {
   @apply bg-[black] text-[white];
 }
 
-.button:active{
-  
+button:hover {
+  @apply cursor-pointer outline-[none] shadow-[10px_10px_10px_rgba[0,0,0,0.95]] transition-all ;
+}
+
+button:active{
+  transform: scale(0.98); 
+  @apply shadow-[3px_2px_1px_rgba(0,0,0,0.24)];
 }

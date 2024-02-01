@@ -1,0 +1,27 @@
+.details {
+    @apply pl-10 pt-2
+}
+
+.details > h1 {
+    @apply font-extrabold text-2xl py-3
+}
+
+.light-font-text{
+    @apply !font-extralight pl-5
+}
+.flex-container-show-player-moves {
+    @apply flex
+}
+
+.blured  {
+    @apply pr-5;
+    filter: blur(8px);
+}
+
+.connect-wallet-to-play {
+    @apply font-bold text-3xl
+}
+
+.finished {
+    @apply py-5
+}

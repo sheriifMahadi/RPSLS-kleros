@@ -23,7 +23,7 @@ function GameDetail ({setGameSessionHash: _setGameSessionHash,
 
     const handleShare = (e) => {
     navigator.clipboard.writeText(
-        `${window.location.hostname}/session-detail/${gameSessionHash}`,
+        `${window.location.hostname}/detail/${gameSessionHash}`,
     )
     }
     
@@ -89,7 +89,7 @@ function GameDetail ({setGameSessionHash: _setGameSessionHash,
                         </span> 
                     </p>
                     <p>Player 2 address: <span>{player2}</span> </p>
-                    <p>Bid: {bid}</p>
+                    <p>Bid: <span>{bid} eth</span></p>
                 </div>
                 : <></>}
                 {gameSessionHash
